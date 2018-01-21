@@ -1,3 +1,5 @@
+
+var env = require('./env.js');
 var ethereumjsWallet = require('ethereumjs-wallet');
 var ProviderEngine = require("web3-provider-engine");
 var WalletSubprovider = require('web3-provider-engine/subproviders/wallet.js');
@@ -6,12 +8,12 @@ var Web3 = require("web3");
 var FilterSubprovider = require('web3-provider-engine/subproviders/filters.js');
 
 // create wallet from existing private key
-var privateKey = 'e203d9d003a557a1203a5b3ab7689c2912da5143de033dbebcbac58a9744fa26';
+var privateKey = env.privateKey;
 var wallet = ethereumjsWallet.fromPrivateKey(new Buffer(privateKey, "hex"));
 var address = "0x" + wallet.getAddress().toString("hex");
 
 // using ropsten testnet
-var providerUrl = "https://rinkeby.infura.io/jqp7LrTFessh6wlnHYAP";
+var providerUrl = env.providerUrl;
 var engine = new ProviderEngine();
 
 // filters
@@ -24,7 +26,7 @@ module.exports = {
   networks: {
     development: {
       host: "localhost",
-      port: 8547,
+      port: 8545,
       network_id: "*" // Match any network id
     },
     infuraRinkeby: {

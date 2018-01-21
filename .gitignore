@@ -1,4 +1,5 @@
 # Basics
+env.js
 *.py[cod]
 *.pyc
 __pycache__
